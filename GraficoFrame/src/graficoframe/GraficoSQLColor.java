@@ -6,12 +6,12 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.ui.ApplicationFrame;
-import org.jfree.chart.ui.TextAnchor;
 import org.jfree.chart.ChartPanel;
 
 public class GraficoSQLColor extends javax.swing.JFrame {
 
+    private final String url ="jdbc:mysql://localhost:3306/componentes?useSSL=false", user ="root", pword="Chap04";
+    
     public GraficoSQLColor() {
         initComponents();
         mostrarGrafico();
@@ -22,49 +22,45 @@ public class GraficoSQLColor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         panelGrafico = new javax.swing.JPanel();
 
         setLocationByPlatform(true);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout panelGraficoLayout = new javax.swing.GroupLayout(panelGrafico);
         panelGrafico.setLayout(panelGraficoLayout);
         panelGraficoLayout.setHorizontalGroup(
             panelGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 622, Short.MAX_VALUE)
+            .addGap(0, 620, Short.MAX_VALUE)
         );
         panelGraficoLayout.setVerticalGroup(
             panelGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 481, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
+
+        jPanel1.add(panelGrafico, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 620, 470));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void mostrarGrafico() {
-        String url = "jdbc:mysql://localhost:3306/componentes";
-        String user = "root";
-        String psword = "root";
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-        try (Connection cnn = DriverManager.getConnection(url, user, psword)) {
+        try (Connection cnn = DriverManager.getConnection(url, user, pword)) {
             String sql = "SELECT * FROM ventas";
             Statement st = cnn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -139,6 +135,7 @@ public class GraficoSQLColor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelGrafico;
     // End of variables declaration//GEN-END:variables
 }

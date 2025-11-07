@@ -7,6 +7,8 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.*;
 
 public class GraficoFrame extends javax.swing.JFrame {
+    
+    private final String url ="jdbc:mysql://localhost:3306/componentes?useSSL=false", user ="root", pword="Chap04";
 
     public GraficoFrame() {
         initComponents();
@@ -29,14 +31,14 @@ public class GraficoFrame extends javax.swing.JFrame {
         panelGráfico.setLayout(panelGráficoLayout);
         panelGráficoLayout.setHorizontalGroup(
             panelGráficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGap(0, 630, Short.MAX_VALUE)
         );
         panelGráficoLayout.setVerticalGroup(
             panelGráficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 440, Short.MAX_VALUE)
         );
 
-        bg.add(panelGráfico, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 640, 450));
+        bg.add(panelGráfico, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 630, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,11 +55,10 @@ public class GraficoFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void mostrarGrafico(){
-        String url="jdbc:mysql://localhost:3306/componentes", user = "root", psword = "root";
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         
-        try (Connection cnn = DriverManager.getConnection(url, user, psword)){
+        try (Connection cnn = DriverManager.getConnection(url, user, pword)){
             String sql ="SELECT * FROM ventas"; Statement st = cnn.createStatement(); ResultSet rs = st.executeQuery(sql);
             
             while(rs.next()){
