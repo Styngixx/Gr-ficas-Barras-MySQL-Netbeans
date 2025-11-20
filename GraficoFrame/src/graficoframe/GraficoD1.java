@@ -1,6 +1,8 @@
 package graficoframe;
 
 import java.awt.BorderLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.*;
 import java.util.List;
 import javax.swing.*;
@@ -45,22 +47,34 @@ public class GraficoD1 extends javax.swing.JFrame {
         }        
     }
     
-    private void agregarEventoLista(){
-        List.addListSelectionListener(new ListSelectionListener(){
-        
-        @Override
-            public void valueChanged(ListSelectionEvent e){
-                if (!e.getValueIsAdjusting()){
-                    List<String> selectioned = List.getSelectedValuesList();
-                    if(!selectioned.isEmpty()){
-                        mostrarGraficoPorProductos(selectioned);
-                    }
+        private void agregarEventoLista(){
+        // Selección múltiple con clic normal (sin Ctrl)
+        List.setSelectionModel(new DefaultListSelectionModel() {
+            @Override
+            public void setSelectionInterval(int index0, int index1) {
+                if (isSelectedIndex(index0)) {
+                    removeSelectionInterval(index0, index1);
+                } else {
+                    addSelectionInterval(index0, index1);
                 }
             }
-        
         });
 
+        // Actualizar gráfico al hacer clic
+        List.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                List<String> seleccionados = List.getSelectedValuesList();
+                if (!seleccionados.isEmpty()) {
+                    mostrarGraficoPorProductos(seleccionados);
+                } else {
+                    mostrarGraficoGeneral();
+                }
+            }
+        });
     }
+
+    
     
     private void mostrarGraficoGeneral(){
         DefaultCategoryDataset dset = new DefaultCategoryDataset();

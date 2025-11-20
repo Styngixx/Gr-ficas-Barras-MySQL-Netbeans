@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Gr-ficas-Barras-MySQL-Netbeans.iml" filepath="$PROJECT_DIR$/.idea/Gr-ficas-Barras-MySQL-Netbeans.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GraficoFrame/GraficoFrame.iml" filepath="$PROJECT_DIR$/GraficoFrame/GraficoFrame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/librerias/sqljdbc_12.10.1.0_enu/sqljdbc_12.10.1.0_enu.iml" filepath="$PROJECT_DIR$/librerias/sqljdbc_12.10.1.0_enu/sqljdbc_12.10.1.0_enu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/librerias/sqljdbc_13.2/sqljdbc_13.2.iml" filepath="$PROJECT_DIR$/librerias/sqljdbc_13.2/sqljdbc_13.2.iml" />
+    </modules>
+  </component>
+</project>
